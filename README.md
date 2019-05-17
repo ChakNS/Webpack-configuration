@@ -24,7 +24,7 @@ npm i webpack-cli --save -dev
     "webpack-cli": "^3.3.2"
 ```
 
-##2.创建项目结构
+## 2.创建项目结构
 
 + 在根目录下创建src文件夹，用于存放HTML、JS、CSS项目文件。
 
@@ -34,7 +34,7 @@ npm i webpack-cli --save -dev
 
 + 在根目录下创建webpack.config.js文件，用于配置webpack。
 
-##3.配置webpack
+## 3.配置webpack
 
 + 修改webpack.config.js文件如下：
 
@@ -55,7 +55,7 @@ module.exports = {
 
 + 注意：运行npx webpack命令会在node_modules中找webpack并执行，也可以用绝对路径运行。
 
-##4.配置loader -- babel 8.x安装及配置
+## 4.配置loader -- babel 8.x安装及配置
 
 
 babel-loader用于将ES6语法转化为ES5语法，以解决浏览器兼容性问题。
@@ -118,7 +118,7 @@ module.exports = {
 presets在这里表示语法，plugins声明上述安装的插件。
 注意：@babel/plugin-proposal-class-properties 是必须的，否则在编译ES6中的Class语法时有时候会报错，这个是折腾我最长时间的一个问题。
 
-##5.配置loader -- css加载模块安装及配置
+## 5.配置loader -- css加载模块安装及配置
 
 为了避免多次进行二次请求，一般建议将css的引入请求声明在main.js文件中，这时候需要安装相应的loader来进行解析。
 
@@ -149,7 +149,7 @@ import './style.css';
 ```
 这样只需要在HTML中引入script文件即可，减少浏览器的二次请求。
 
-##6.配置loader -- url加载模块安装及配置
+## 6.配置loader -- url加载模块安装及配置
 
 当你在css文件中添加与url相关的样式时，webpack会报错，需要安装相应的loader
 
@@ -178,7 +178,7 @@ module: {
 { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=43960' }
 ```
 
-##7.配置自动编译webpack-dev-server
+## 7.配置自动编译webpack-dev-server
 
 + 安装：
 
@@ -209,7 +209,7 @@ cnpm webpack-dev-server -D
 "dev": "webpack-dev-server --contentBase src"
 ```
 
-##8.安装配置html-webpack-plugin插件
+## 8.安装配置html-webpack-plugin插件
 当你安装并配置好webpack-dev-server之后，会发现只有修改main.js时会自动编译，而修改index.html时并不会，而且浏览器不会自动刷新页面；另外，你还需修改script标签，添加 --contentBase 属性，这显然不符合我们的需求，接下来通过安装并配置html-webpack-plugin插件来解决这些问题。
 
 + 安装
@@ -254,7 +254,7 @@ module.exports = {
 + 此时修改index.html也会自动编译并刷新浏览器页面。
 + 另外index.html中的script标签也可以注释掉，生成的index.html文件中会自动注入bundle.js。
 
-##9.配置dev属性实现自动打开浏览器
+## 9.配置dev属性实现自动打开浏览器
 + 修改package.json：
 
 ```
@@ -269,7 +269,7 @@ module.exports = {
 
 这样，当运行npm run dev时，会自动打开浏览器并访问 http://localhost:3000 
 
-##10. --hot热更新
+## 10. --hot热更新
 
 + 启动热更新的时候，当修改代码时，webpack会把修改的内容以一种类似补丁的形式加载到页面中（这是我的理解，错误的地方请大佬指正），这样不会对整个页面进行刷新重加载，加快速度。
 + 这个功能在样式改变时表现得比较明显，由于main.js中引入css，当css文件更改时，也会触发热更新，此时页面样式改变，但不刷新页面。
@@ -304,7 +304,6 @@ module: {
 ```
 
 + 这样，当修改index.html的内容时，页面会自动更新
-
 
 
 
