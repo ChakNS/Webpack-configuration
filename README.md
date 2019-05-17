@@ -1,11 +1,11 @@
-#webpack配置
+# webpack配置
 
 
-##注意：
+## 注意：
 webpack目前已经更新到4.x版本，配置跟之前有所不同。
 
 
-##1.安装webpack，建议局部安装，避免多个项目使用不同版本的webpack
+## 1.安装webpack，建议局部安装，避免多个项目使用不同版本的webpack
 
 + 进入项目根目录，运行 npm init -y 创建package.json文件。
 
