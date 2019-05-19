@@ -140,7 +140,9 @@ module: {
       ]
   }
 ```
-模块的处理流程是先用css-loader对css文件进行处理，再用style-loader进行二次处理并输出。因此同理可安装并配置scss、less等样式文件，分别安装sass-loader、less-loader，并在webpack.config.js中配置，替换css-loader即可。
+模块的处理流程是先用css-loader对css文件进行处理，再用style-loader进行二次处理并输出。因此同理可安装并配置scss、less等样式文件，分别安装sass-loader、less-loader，并在webpack.config.js中配置，添加在css-loader后面即可，webpack会从右到左调用loader模块来加载相应的样式文件。
+
+注意：安装sass-loader、less-loader的时候，可能会要求安装node-sass、less模块，用cnpm安装即可。
 
 + 这时候，你可以在src目录下创建css文件，添加css样式，并在main.js中引入：
 
