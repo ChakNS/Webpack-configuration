@@ -64,11 +64,11 @@ babel-loader用于将ES6语法转化为ES5语法，以解决浏览器兼容性�
 
 请注意，babel 8.x中有一些包被废弃，而有一些新的包被要求引入进来，同时对包名进行了修改，配置的写法也相应做了改变，当时在配置的时候花了好长时间才搞明白。
 
-```
+```js
 cnpm i babel-loader '@babel/core' '@babel/preset-env' '@babel/plugin-transform-runtime' '@babel/runtime' '@babel/plugin-proposal-class-properties' -D
 ```
 以下这些包最好都装上：
-```
+```js
 "@babel/core": "^7.4.4",
 "@babel/plugin-proposal-class-properties": "^7.4.4",
 "@babel/plugin-transform-runtime": "^7.4.4",
@@ -80,7 +80,7 @@ cnpm i babel-loader '@babel/core' '@babel/preset-env' '@babel/plugin-transform-r
 
 + 配置webpack.config.js
 
-```
+```js
 module.exports = {
   mode: 'development',    //声明开发环境
   entry: './src/main.js',  //指定入口文件，为src目录下的js文件
@@ -104,7 +104,7 @@ module.exports = {
 + 配置.babelrc文件
 
 在根目录下创建.babelrc文件，用于配置babel-loader：
-```
+```js
 {
     "presets": [
         "@babel/preset-env"
@@ -124,13 +124,13 @@ presets在这里表示语法，plugins声明上述安装的插件。
 
 + 安装
 
-```
+```js
 cnpm i style-loader css-loader -D
 ```
 
 + 配置webpack.config.js
 
-```
+```js
 module: {
       rules : [
       		//配置js加载模块
@@ -146,7 +146,7 @@ module: {
 
 + 这时候，你可以在src目录下创建css文件，添加css样式，并在main.js中引入：
 
-```
+```js
 import './style.css';
 ```
 这样只需要在HTML中引入script文件即可，减少浏览器的二次请求。
@@ -157,13 +157,13 @@ import './style.css';
 
 + 安装url-loader
 
-```
+```js
 cnpm i url-loader file-loader -D  
 ```
 
 + 在webpack.config.js中配置
 
-```
+```js
 module: {
       rules : [
           //配置js加载模块
@@ -176,7 +176,7 @@ module: {
   }
 ```
 注意：处理过后的图片名称会自动进行base64编码，防止重名，可以传入limit参数，只有小于指定字节大小的图片才会被编码：
-```
+```js
 { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=43960' }
 ```
 
@@ -184,12 +184,12 @@ module: {
 
 + 安装：
 
-```
+```js
 cnpm webpack-dev-server -D
 ```
 + 在package.json的scripts中配置：
 
-```
+```js
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server" //添加dev属性
@@ -201,13 +201,13 @@ cnpm webpack-dev-server -D
 	- 通过访问 http://localhost:8080/ 来进入网站，此时看到一个目录，这是我们创建的根目录，单击src即可访问到index.html。
 	- 此时根目录下有一个看不到的bundle.js文件，可以通过修改html中的script标签来进行关联。
 
-```
+```js
 <script src="../bundle.js"></script>
 ```
 + 此时网站可以正常访问了，同时修改main.js中的代码，webpack会自动编译
 + 修改package.json来达到访问 http://localhost:8080/ 时默认进入src目录的目的：
 
-```
+```js
 "dev": "webpack-dev-server --contentBase src"
 ```
 
@@ -216,13 +216,13 @@ cnpm webpack-dev-server -D
 
 + 安装
 
-```
+```js
 cnpm i html-webpack-plugin -D 
 ```
 
 + 配置webpack.config.json,导入html-webpack-plugin插件并在module.exports中添加plugins属性
 
-```
+```js
 const path = require('path');   //导入path路径处理模块
 const hwp = require('html-webpack-plugin');  //导入HTML自动处理插件
 
@@ -259,7 +259,7 @@ module.exports = {
 ## 9.配置dev属性实现自动打开浏览器
 + 修改package.json：
 
-```
+```js
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --open --port 3000 --hot"
@@ -278,19 +278,19 @@ module.exports = {
 + 由于webpack把main.js当作入口文件，所以只有当main.js中内容或其引入的文件内容发生改变时，才会触发热更新，因此开启热更新后，修改HTML并不会使页面更新内容，可以通过在main.js中引入index.html解决，这是一种方法。
 + 引入index.html
 
-```
+```js
 import './index.html';
 ```
 
 + 安装raw-loader加载模块
 
-```
+```js
 cnpm i raw-loader -D
 ```
 
 + 在webpack.config.js中配置
 
-```
+```js
 module: {
       rules : [
           //配置js加载模块
