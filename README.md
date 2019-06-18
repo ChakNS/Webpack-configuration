@@ -18,7 +18,7 @@ npm i webpack-cli --save -dev
 ```
 + 安装完成后在package.json中可以看到:
 
-```
+```js
   "dependencies": {
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
