@@ -11,7 +11,7 @@ webpack目前已经更新到4.x版本，配置跟之前有所不同。
 
 + 局部安装webpack，如果是webpack 4.x版本，还需要安装webpack-cli。
 
-```
+```js
 npm i webpack --save -dev
 
 npm i webpack-cli --save -dev
