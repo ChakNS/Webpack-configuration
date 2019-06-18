@@ -38,7 +38,7 @@ npm i webpack-cli --save -dev
 
 + 修改webpack.config.js文件如下：
 
-```
+```js
 const path = require('path');   //引入path
 
 module.exports = {
